@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const Jobs = ({ jobsArray, numberOfJobs, large }) => {
-  return jobsList.map((job, index) => {
+  return jobsArray.map((job, index) => {
     const {
       listingHash,
       jobDLPUrl,
@@ -20,7 +20,7 @@ const Jobs = ({ jobsArray, numberOfJobs, large }) => {
       <Col key={listingHash} xs={12} sm={large ? 12 : 6} md={large ? 12 : 4} lg={large ? 6 : 3} className="card-col">
         <Card className="card" onClick={() => window.open(`https://zippia.com/${jobDLPUrl}`)} >
           <div className="card-container">
-            {companyLogo && <Card.Img variant="top" src={companyLogo} className="company-logo" onError={() => handleLogoError(companyLogo)} />}
+            {companyLogo && <Card.Img variant="top" src={companyLogo} className="company-logo"/>}
             <Card.Body>
               <Card.Title className="card-job-title">{jobTitle}</Card.Title>
               <Card.Subtitle className="card-job-company">{companyName}</Card.Subtitle>

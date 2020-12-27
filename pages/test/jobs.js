@@ -5,8 +5,6 @@ import Jobs from '../../components/jobs-list'
 import '../../styles/styles.css'
 
 const Landing = ({ jobs }) => {
-
-  console.log(jobs)
   const [jobsList, setJobsList] = useState(jobs)
   const [jobsByCompany, setJobsByCompany] = useState(new Map())
   const [activeGrouping, setActiveGrouping] = useState('none')
@@ -63,7 +61,7 @@ const Landing = ({ jobs }) => {
       // there will be an instance where the jobs left after filtering will be 0 so I put a handler here to not display the company name that has no jobs available.
       if (jobs.length)
         return (
-          <Col sm={12} md={12} >
+          <Col sm={12} md={12} key={company.company} >
             <div>
               <h1 className="company-name">{company.company}</h1>
               <Row className="jobs-container">
@@ -73,7 +71,8 @@ const Landing = ({ jobs }) => {
           </Col>
         )
 
-      return <></>
+      // I would have used a react fragment but that will give an error/warning that each child in a map component should have a unique key prop
+      return <div key={company.company} />
     })
   }
 
