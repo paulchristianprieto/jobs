@@ -13,34 +13,46 @@ const Landing = ({ jobs }) => {
   const [withinTheWeek, setWithinTheWeek] = useState(false)
 
 
+  // this is the handler for grouping the jobs by company name.
   const handleGroupByCompany = () => {
     const jobsGroupedByCompany = groupBy(jobs, job => job.companyName)
+
+    // updateJobsByCompanyState
     setJobsByCompany(jobsGroupedByCompany)
 
+    // setActiveGrouping if to let the user know that the data they are viewing is grouped by company name
     activeGrouping === 'company' ? setActiveGrouping('none') : setActiveGrouping('company')
   }
 
   const handleLast7days = (jobsArray) => {
+    // Reset the data if the filter for within the week is not active
     if (withinTheWeek) {
+      // if within the week is true, reset the data to thedata without the filter using the data from props and disable thecue that the last 7 days button is active
       setJobsList(jobs)
       setWithinTheWeek(false)
     }
     else {
+      // filter thedata if the user clicks on last 7 days button
       const filteredJobsArray = jobsArray.filter((job) => {
         const days = parseInt(job.postedDate.substring(0, 1));
         return days <= 7
       })
+      // set the jobs list as the filtered array
       setJobsList(filteredJobsArray)
+      // set within the week will be the cue for the user to know if the data they are viewing is with the last 7 days filter
       setWithinTheWeek(true)
     }
   }
 
   const JobsByCompany = ({ jobsMap }) => {
+    // convert the Map to an array to be able to display the data using the map function
     const jobsArray = Array.from(jobsMap, ([company, jobs]) => ({ company, jobs }));
 
+    // display the jobs by company name
     return jobsArray.map(company => {
       let jobs = company.jobs
 
+      // check if within the week button is active, if it is active I'll be filtering out the jobs within the 7 days
       if (withinTheWeek) {
         jobs = jobs.filter((job) => {
           const days = parseInt(job.postedDate.substring(0, 1));
@@ -48,6 +60,7 @@ const Landing = ({ jobs }) => {
         })
       }
 
+      // there will be an instance where the jobs left after filtering will be 0 so I put a handler here to not display the company name that has no jobs available.
       if (jobs.length)
         return (
           <Col sm={12} md={12} >
@@ -64,7 +77,7 @@ const Landing = ({ jobs }) => {
     })
   }
 
-  // I careted this function to group the list of jobs by company id
+  // I created this function to group the list of jobs by company id
   const groupBy = (list, keyGetter) => {
     const map = new Map();
     list.forEach((item) => {

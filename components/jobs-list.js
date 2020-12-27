@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const Jobs = ({ jobsArray, numberOfJobs, large }) => {
-  const handleLogoError = (link) => {
-    return 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg'
-  }
+
 
   return jobsArray.map((job, index) => {
     const {
