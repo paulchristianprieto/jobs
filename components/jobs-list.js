@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const Jobs = ({ jobsArray, numberOfJobs, large }) => {
-
-
-  return jobsArray.map((job, index) => {
+  return jobsList.map((job, index) => {
     const {
       listingHash,
       jobDLPUrl,
