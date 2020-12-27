@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
+body {
+    font-family: 'Roboto', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.card-col {
+    margin-bottom: 16px;
+    display: table-cell;
+}
+
+.card-container {
+    padding: 8px;
+}
+
+.card {
+    background-color: whitesmoke;
+    height: 100%;
+}
+
+.card:hover {
+    background-color: #E8E4C9;
+}
+
+.card-job-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.card-job-company {
+    font-weight: 400;
+    padding-bottom: 16px;
+    font-size: 16px;
+}
+
+.card-job-salary {
+    font-weight: 400;
+    padding-bottom: 8px;
+    font-size: 16px;
+}
+
+.card-job-description {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.company-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.buttons-row {
+    margin: 16px 0 16px 0;
+}
+
+.buttons-col {
+    padding: 0
+}
+
+.button {
+    margin-right: 12px;
+}
